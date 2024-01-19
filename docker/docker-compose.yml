@@ -4,8 +4,6 @@ services:
     image: eikek0/sharry:latest
     container_name: sharry
     command: /opt/sharry.conf
-    ports:
-      - "9090:9090"
     volumes:
       - ${PWD}/sharry.conf:/opt/sharry.conf
     depends_on:
@@ -21,3 +19,8 @@ services:
       - POSTGRES_DB=dbname
 volumes:
   postgres_data:
+
+networks:
+  default:
+    external: true
+    name: npm
